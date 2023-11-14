@@ -1,0 +1,33 @@
+{
+  "tasks": [
+    {
+      "type": "cppbuild",
+      "label": "Build",
+      "command": "C:/msys64/mingw64/bin/g++.exe",
+      "args": [
+        "-fdiagnostics-color=always",
+        "-g",
+        "-IC:\\msys64\\mingw64\\include\\GL",
+        "${fileDirname}\\main.cpp",
+        "-o",
+        "${fileDirname}\\bin\\gltest.exe",
+        "-LC:/msys64/mingw64/lib",
+        "-lglew32",
+        "-lmingw32",
+        "-lfreeglut"
+      ],
+      "options": {
+        "cwd": "C:/msys64/mingw64/bin"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "Compilation."
+    }
+  ],
+  "version": "2.0.0"
+}
