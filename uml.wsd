@@ -1,0 +1,100 @@
+@startuml
+class SGA_Application
+SGA_Application : {static} - SGA_Application &instance
+
+SGA_Application : {static} + SGA_Application &getInstance()
+SGA_Application : + void addWindow(SGA_Window window)
+SGA_Application : + void start()
+
+SGA_Application "1..*" *-- SGA_Window
+SGA_Renderer --|> SGA_Window
+SGA_Application "1" *-- SGA_Timer
+
+class SGA_Timer
+SGA_Timer : - double startTime
+
+SGA_Timer : + void reset()
+SGA_Timer : + double getElapsedSeconds()
+
+class SGA_Vector <T>
+
+abstract class SGA_Window
+SGA_Window : {abstract} + void update(double deltaTime)
+SGA_Window : {abstract} + void draw()
+SGA_Window : {abstract} + void handleEvents()
+
+abstract class SGA_Renderer
+
+class SGA_ShaderProgram
+SGA_ShaderProgram : + void addShader(SGA_Shader shader)
+SGA_ShaderProgram : + void linkProgram()
+SGA_ShaderProgram : + void validateProgram()
+
+SGA_ShaderProgram "0..*" *-- SGA_Shader
+SGA_Renderer "1" *-- SGA_ShaderProgram
+
+abstract class SGA_Shader
+SGA_Shader : #GLenum shaderType
+SGA_Shader : - char *shaderPath
+SGA_Shader : - GLuint shaderObj
+SGA_Shader : + void loadCompileShader()
+SGA_Shader : + GLuint getShaderObject()
+
+class ConcreteRenderer
+ConcreteRenderer --|> SGA_Renderer
+
+class SGA_VertexShader
+SGA_VertexShader --|> SGA_Shader
+class SGA_FragmentShader
+SGA_FragmentShader --|> SGA_Shader
+
+@enduml
+
+
+class Application
+Application : {static} -Application instance
+
+Application : {static} +Application& getInstance()
+Application : +start()
+Application : +addWindow(Window* window)
+Application : +Window* getWindow(unsigned int id)
+
+
+abstract class Window
+Window : #SDL_Window* window
+
+Window : +unsigned int getID()
+Window : +int getWidth()
+Window : +int getHeight()
+Window : {abstract} +refresh() = 0
+Window : {abstract} +handleEvent() = 0
+Window : {abstract} +handleUpdate(double deltaTime) = 0
+Window : {abstract} +handleDraw() = 0
+
+
+abstract class Renderer
+Renderer : -SDL_Renderer* renderer
+
+Renderer : +SDL_Texture* loadTextureFromImage(string fileName)
+Renderer : +SDL_Surface* createTextureFromSurface(SDL_Surface* surface)
+Renderer : +clear()
+Renderer : +drawPoint(const SDL_Point& point)
+Renderer : +setDrawColor(const SDL_Color& color)
+Renderer : +SDL_Color getDrawColor()
+Renderer : +fillRectangle(const SDL_Rect& rect, const SDL_Color& color)
+Renderer : +drawLine(const SDL_Point& from, const SDL_Point& to)
+Renderer : +refresh()
+Renderer : +int getRendererInfo(SDL_RendererInfo* rendererInfo)
+Renderer : +copy(SDL_Texture* texture, const SDL_Rect* srcRect, const SDL_Rect* dstRect)
+Renderer : +copyExtra(SDL_Texture* texture, const SDL_Rect* srcRect, const SDL_Rect* dstRect, const SDL_RendererFlip& flip, double angle, const SDL_Point* center)
+Renderer : {abstract} +handleEvent() = 0
+Renderer : {abstract} +handleUpdate(double deltaTime) = 0
+Renderer : {abstract} +handleDraw() = 0
+
+class FractalRenderer
+class Complex
+
+Application "1..*" *-- Window
+Renderer --|> Window
+FractalRenderer --|> Renderer
+
