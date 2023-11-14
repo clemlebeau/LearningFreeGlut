@@ -10,19 +10,25 @@
 
 GLuint VBO; // Vertex buffer object
 
+GLint vertPositionLocation;
+GLint screenSize;
+
 void renderScene()
 {
   glClearColor(0.0, 1.0, 0.0, 1.0);
   glClear(GL_COLOR_BUFFER_BIT);
 
-  glEnableVertexAttribArray(0);
+  glUniform2f(screenSize, glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
+
+  glEnableVertexAttribArray(vertPositionLocation);
 
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
   glVertexAttribPointer(0, 3, GL_DOUBLE, GL_FALSE, 0, 0);
 
   glDrawArrays(GL_TRIANGLES, 0, 6);
-  glDisableVertexAttribArray(0);
+  glDisableVertexAttribArray(vertPositionLocation);
 
+  glutPostRedisplay(); // Force freeGLUT to call render() again
   glutSwapBuffers();
 }
 
@@ -59,8 +65,37 @@ std::string readFile(const char *filePath)
   return content;
 }
 
+bool loadCompileShader(const char *shaderPath, GLenum shaderType, GLuint *outShaderObj)
+{
+  *outShaderObj = glCreateShader(shaderType);
+
+  std::string vertShaderText = readFile(shaderPath);
+  if (vertShaderText == "")
+  {
+    fprintf(stderr, "Error : File %s came back empty.\n", shaderPath);
+    return false;
+  }
+
+  const char *source[] = {vertShaderText.c_str()};
+  GLint sourceSize[] = {(GLint)vertShaderText.length()};
+  glShaderSource(*outShaderObj, 1, source, sourceSize);
+
+  glCompileShader(*outShaderObj);
+  GLint success;
+  glGetShaderiv(*outShaderObj, GL_COMPILE_STATUS, &success);
+  if (!success)
+  {
+    GLchar infoLog[1024];
+    glGetShaderInfoLog(*outShaderObj, sizeof(infoLog), NULL, infoLog);
+    fprintf(stderr, "Error at shader compile time : %s\n", infoLog);
+    return false;
+  }
+  return true;
+}
+
 int main(int argc, char **argv)
 {
+  // TODO : Tidy up source code with OOP now that shaders are working.
 
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
@@ -80,21 +115,48 @@ int main(int argc, char **argv)
 
   GLuint shaderProgram = glCreateProgram();
 
-  GLuint vertShaderObj = glCreateShader(GL_VERTEX_SHADER);
-  const GLchar *vertShaderPath = "../shader.vert";
+  const char *vertShaderPath = "../shader.vert";
+  GLuint vertShaderObj;
+  if (!loadCompileShader(vertShaderPath, GL_VERTEX_SHADER, &vertShaderObj))
+    return 1;
+  glAttachShader(shaderProgram, vertShaderObj);
 
-  std::string vertShaderText = readFile(vertShaderPath);
-  if (vertShaderText == "")
-  {
-    fprintf(stderr, "Error : File %s came back empty.\n", vertShaderPath);
+  const char *fragShaderPath = "../shader.frag";
+  GLuint fragShaderObj;
+  if(!loadCompileShader(fragShaderPath, GL_FRAGMENT_SHADER, &fragShaderObj))
+    return 1;
+  glAttachShader(shaderProgram, fragShaderObj);
+
+  glLinkProgram(shaderProgram);
+  GLint success;
+  glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
+  if(success == 0) {
+    GLchar infoLog[1024];
+    glGetProgramInfoLog(shaderProgram, sizeof(infoLog), NULL, infoLog);
+    fprintf(stderr, "Error at shader program link time : %s\n", infoLog);
     return 1;
   }
 
-  const char *source[] = {vertShaderText.c_str()};
-  GLint sourceSize[] = {(GLint)vertShaderText.length()};
-  glShaderSource(vertShaderObj, 1, source, sourceSize);
+  glValidateProgram(shaderProgram);
 
-  // glCompileShader()
+  glDetachShader(shaderProgram, vertShaderObj);
+  glDeleteShader(vertShaderObj);
+  glDetachShader(shaderProgram, fragShaderObj);
+  glDeleteShader(fragShaderObj);
+
+  glUseProgram(shaderProgram);
+
+  vertPositionLocation = glGetAttribLocation(shaderProgram, "position");
+  if (vertPositionLocation == 0xFFFFFFFF) {
+    fprintf(stderr, "Couldn't find 'position' in shader program.\n");
+    return 1;
+  }
+
+  screenSize = glGetUniformLocation(shaderProgram, "screenSize");
+  if (screenSize == 0xFFFFFFFF) {
+    fprintf(stderr, "Couldn't find 'screenSize' in shader program.\n");
+    return 1;
+  }
 
   glutDisplayFunc(renderScene); // Add renderScene() as a callback to GLUT's rendering call
   glutMainLoop();               // Give control to GLUT
