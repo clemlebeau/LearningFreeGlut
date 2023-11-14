@@ -8,13 +8,15 @@
         "-fdiagnostics-color=always",
         "-g",
         "-IC:\\msys64\\mingw64\\include\\GL",
+        "-IC:\\msys64\\mingw64\\include",
         "${fileDirname}\\main.cpp",
         "-o",
         "${fileDirname}\\bin\\gltest.exe",
         "-LC:/msys64/mingw64/lib",
         "-lglew32",
         "-lmingw32",
-        "-lfreeglut"
+        "-lfreeglut",
+        "-lopengl32"
       ],
       "options": {
         "cwd": "C:/msys64/mingw64/bin"
