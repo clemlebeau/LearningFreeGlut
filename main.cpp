@@ -1,8 +1,6 @@
 #include <GL/glew.h>
 #include <GL/freeglut.h>
-#include <GL/gl.h>
 #include <iostream>
-#include <windows.h>
 
 #include "math_util.hpp"
 
