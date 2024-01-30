@@ -13,11 +13,17 @@ public:
 
    void addShader(SGA_Shader* shader);
 
+   void buildShaders();
+
    bool doesProgramLink();
 
-   void validateProgram();
+   void validate();
 
    void use();
+
+   GLint getAttributeLocation(const char* attribute);
+
+   GLint getUniformLocation(const char* uniform);
 
 private:
    GLuint programIdentifier_;

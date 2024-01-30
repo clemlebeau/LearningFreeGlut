@@ -1,10 +1,13 @@
 #pragma once
 
+//clang-format off
+#include <GL/glew.h>
+//clang-format on
+
 #include "SGA_Timer.hpp"
 #include "SGA_Window.hpp"
 
 #include <GL/freeglut.h>
-#include <GL/glew.h>
 #include <iostream>
 #include <list>
 
@@ -15,20 +18,16 @@ public:
                    unsigned int displayMode = GLUT_DOUBLE | GLUT_RGBA |
                                               GLUT_DEPTH);
 
-   SGA_Application& getInstance();
+   ~SGA_Application();
 
-   void addWindow(SGA_Window* window);
+   void setWindow(SGA_Window* window);
 
    void start();
 
 private:
-   static SGA_Application instance_;
-
    SGA_Timer timer_;
 
-   std::list<SGA_Window*> windows_;
+   SGA_Window* window_;
 
    int initGlew();
 };
-
-SGA_Application SGA_Application::instance_;

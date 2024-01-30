@@ -1,34 +1,41 @@
 #include "SGA_Application.hpp"
 
-SGA_Application::SGA_Application(int argc, char **argv, unsigned int displayMode = GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH) {
+SGA_Application::SGA_Application(int argc,
+                                 char** argv,
+                                 unsigned int displayMode) {
+   window_ = nullptr;
    glutInit(&argc, argv);
    glutInitDisplayMode(displayMode);
+}
+
+SGA_Application::~SGA_Application() {
+   delete window_;
 }
 
 int SGA_Application::initGlew() {
    GLenum glewInitResult = glewInit();
    if(glewInitResult != GLEW_OK) {
-      std::cerr << "Error while initializing GLEW : " << glewGetErrorString(glewInitResult) << std::endl;
+      std::cerr << "Error while initializing GLEW : "
+                << glewGetErrorString(glewInitResult) << std::endl;
       return 1;
    }
 
    return 0;
 }
 
-void SGA_Application::addWindow(SGA_Window* window) {
-   windows_.push_back(window);
+void SGA_Application::setWindow(SGA_Window* window) {
+   if(window_ == nullptr) {
+      window_ = window;
+      initGlew();
+   }
 }
 
 void SGA_Application::start() {
-   if(windows_.size() <= 0) {
-      std::cerr << "No windows were added, couldn't start application." << std::endl;
-      return;
-   }
-   
-   int glewInitResult = initGlew();
-   if(glewInitResult != 0) {
+   if(window_ == nullptr) {
+      std::cerr << "No windows were added, couldn't start application."
+                << std::endl;
       return;
    }
 
-   // TODO: Application loop
+   glutMainLoop();
 }

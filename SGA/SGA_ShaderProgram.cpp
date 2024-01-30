@@ -32,15 +32,29 @@ bool SGA_ShaderProgram::doesProgramLink() {
    return true;
 }
 
+void SGA_ShaderProgram::buildShaders() {
+   for(auto shader: shaders_) {
+      shader->doesShaderCompile();
+   }
+}
+
 void SGA_ShaderProgram::attachShaders() {
    for(auto shader: shaders_)
       glAttachShader(programIdentifier_, shader->getShaderObject());
 }
 
-void SGA_ShaderProgram::validateProgram() {
+void SGA_ShaderProgram::validate() {
    glValidateProgram(programIdentifier_);
 }
 
 void SGA_ShaderProgram::use() {
    glUseProgram(programIdentifier_);
+}
+
+GLint SGA_ShaderProgram::getAttributeLocation(const char* attribute) {
+   return glGetAttribLocation(programIdentifier_, attribute);
+}
+
+GLint SGA_ShaderProgram::getUniformLocation(const char* uniform) {
+   return glGetUniformLocation(programIdentifier_, uniform);
 }

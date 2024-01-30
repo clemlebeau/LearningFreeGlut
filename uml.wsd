@@ -1,4 +1,4 @@
-@startuml
+@startuml SGA
 class SGA_Application
 SGA_Application : {static} - SGA_Application &instance
 

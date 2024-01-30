@@ -1,9 +1,12 @@
 #pragma once
 
+//clang-format off
+#include <GL/glew.h>
+//clang-format on
+
 #include <filesystem>
 #include <fstream>
 #include <GL/freeglut.h>
-#include <GL/glew.h>
 #include <iostream>
 #include <string>
 
