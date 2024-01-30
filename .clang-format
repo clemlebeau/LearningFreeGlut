@@ -1,0 +1,152 @@
+---
+AlignAfterOpenBracket: Align
+AlignArrayOfStructures: Right
+AlignConsecutiveAssignments:
+  Enabled: false
+AlignConsecutiveBitFields:
+  Enabled: false
+AlignConsecutiveDeclarations:
+  Enabled: false
+AlignConsecutiveMacros:
+  Enabled: false
+AlignConsecutiveShortCaseStatements:
+  Enabled: false
+AlignEscapedNewlines: DontAlign
+AlignOperands: AlignAfterOperator
+AlignTrailingComments:
+  Kind: Always
+AllowAllArgumentsOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowShortBlocksOnASingleLine: Empty
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortEnumsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLambdasOnASingleLine: Empty
+AllowShortLoopsOnASingleLine: false
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: false
+AlwaysBreakTemplateDeclarations: No
+BinPackArguments: false
+BinPackParameters: false
+BitFieldColonSpacing: After
+BraceWrapping:
+  AfterCaseLabel: false
+  AfterClass: false
+  AfterControlStatement: Never
+  AfterEnum: false
+  AfterFunction: false
+  AfterNamespace: false
+  AfterObjCDeclaration: false
+  AfterStruct: false
+  AfterUnion: false
+  AfterExternBlock: false
+  BeforeCatch: false
+  BeforeElse: false
+  BeforeLambdaBody: false
+  BeforeWhile: false
+  IndentBraces: false
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: false
+BracedInitializerIndentWidth: 3
+VerilogBreakBetweenInstancePorts: true
+UseTab: Never
+TabWidth: 3
+Standard: c++20
+SpacesInSquareBrackets: false
+SpacesInParensOptions:
+  InConditionalStatements: false
+  InCStyleCasts: false
+  InEmptyParentheses: false
+  Other: false
+SpacesInParens: Never
+SpacesInLineCommentPrefix:
+  Minimum: 1
+  Maximum: -1
+SpacesInContainerLiterals: false
+SpacesInAngles: Never
+SpacesBeforeTrailingComments: 1
+SpaceInEmptyBlock: false
+SpaceBeforeSquareBrackets: false
+SpaceBeforeRangeBasedForLoopColon: false
+SpaceBeforeParensOptions:
+  BeforeNonEmptyParentheses: false
+  AfterRequiresInExpression: false
+  AfterRequiresInClause: false
+  AfterOverloadedOperator: false
+  AfterIfMacros: false
+  AfterFunctionDefinitionName: false
+  AfterFunctionDeclarationName: false
+  AfterForeachMacros: false
+  AfterControlStatements: false
+SpaceBeforeParens: Never
+SpaceBeforeJsonColon: false
+SpaceBeforeInheritanceColon: false
+SpaceBeforeCtorInitializerColon: false
+SpaceBeforeCpp11BracedList: false
+SpaceBeforeCaseColon: false
+SpaceBeforeAssignmentOperators: true
+SpaceAroundPointerQualifiers: Default
+SpaceAfterTemplateKeyword: false
+SpaceAfterLogicalNot: false
+SpaceAfterCStyleCast: true
+SortUsingDeclarations: LexicographicNumeric
+SortIncludes: CaseInsensitive
+SeparateDefinitionBlocks: Always
+RequiresExpressionIndentation: Keyword
+RequiresClausePosition: OwnLine
+RemoveSemicolon: false
+RemoveParentheses: MultipleParentheses
+RemoveBracesLLVM: true
+ReflowComments: true
+ReferenceAlignment: Left
+PointerAlignment: Left
+QualifierAlignment: Left
+PackConstructorInitializers: CurrentLine
+PPIndentWidth: 1
+NamespaceIndentation: All
+MaxEmptyLinesToKeep: 1
+LineEnding: LF
+Language: Cpp
+KeepEmptyLinesAtTheStartOfBlocks: false
+KeepEmptyLinesAtEOF: false
+IntegerLiteralSeparator:
+  BinaryMinDigits: 4
+  Binary: 4
+  Decimal: -1
+  DecimalMinDigits: -1
+  Hex: -1
+  HexMinDigits: -1
+InsertTrailingCommas: None
+InsertNewlineAtEOF: true
+InsertBraces: false
+IndentWrappedFunctionNames: false
+IndentWidth: 3
+IndentRequiresClause: true
+IndentPPDirectives: AfterHash
+IndentGotoLabels: false
+IndentExternBlock: Indent
+IndentCaseLabels: true
+IndentCaseBlocks: false
+IndentAccessModifiers: false
+IncludeBlocks: Regroup
+FixNamespaceComments: false
+ExperimentalAutoDetectBinPacking: false
+EmptyLineBeforeAccessModifier: Always
+EmptyLineAfterAccessModifier: Never
+DisableFormat: false
+DerivePointerAlignment: false
+Cpp11BracedListStyle: true
+CompactNamespaces: false
+ColumnLimit: 80
+BreakStringLiterals: true
+BreakInheritanceList: AfterComma
+BreakConstructorInitializers: AfterColon
+BreakBeforeTernaryOperators: false
+BreakBeforeConceptDeclarations: Always
+BreakBeforeBraces: Custom
+BreakBeforeBinaryOperators: None
+BreakArrays: false
+BreakAfterAttributes: Leave
+AccessModifierOffset: -3
