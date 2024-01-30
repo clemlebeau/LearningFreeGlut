@@ -1,13 +1,5 @@
 #include "SGA_Shader.hpp"
 
-#include <filesystem>
-#include <fstream>
-#include <iostream>
-#include <string>
-
-#include <GL/freeglut.h>
-#include <GL/glew.h>
-
 SGA_Shader::SGA_Shader(const char* shaderPath) {
    shaderPath_ = shaderPath;
 }

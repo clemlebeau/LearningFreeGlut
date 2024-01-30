@@ -1,5 +1,8 @@
 #pragma once
 
+#include <ctime>
+#include <chrono>
+
 class SGA_Timer {
 public:
    SGA_Timer();
@@ -9,5 +12,5 @@ public:
    double getElapsedSeconds();
 
 private:
-   double startTime_;
+   std::chrono::steady_clock::time_point startTime_;
 };

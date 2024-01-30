@@ -1,7 +1,5 @@
 #include "SGA_ShaderProgram.hpp"
 
-#include <iostream>
-
 SGA_ShaderProgram::SGA_ShaderProgram() {
    programIdentifier_ = glCreateProgram();
 }

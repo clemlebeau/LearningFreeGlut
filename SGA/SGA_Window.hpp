@@ -1,5 +1,7 @@
 #pragma once
 
+#include <GL/freeglut.h>
+
 class SGA_Window {
 public:
    SGA_Window(int width, int height, const char* title);

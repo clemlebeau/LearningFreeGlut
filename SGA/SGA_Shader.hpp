@@ -1,7 +1,10 @@
 #pragma once
 
+#include <filesystem>
+#include <fstream>
 #include <GL/freeglut.h>
 #include <GL/glew.h>
+#include <iostream>
 #include <string>
 
 class SGA_Shader {
@@ -18,6 +21,8 @@ public:
 
 protected:
    GLenum shaderType_;
+
+   virtual void abstract() = 0;
 
 private:
    const char* shaderPath_;

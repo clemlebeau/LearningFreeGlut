@@ -4,11 +4,16 @@
 #include "SGA_Window.hpp"
 
 #include <GL/freeglut.h>
+#include <GL/glew.h>
+#include <iostream>
 #include <list>
 
 class SGA_Application {
 public:
-   SGA_Application(int argc, char** argv, unsigned int displayMode = GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
+   SGA_Application(int argc,
+                   char** argv,
+                   unsigned int displayMode = GLUT_DOUBLE | GLUT_RGBA |
+                                              GLUT_DEPTH);
 
    SGA_Application& getInstance();
 

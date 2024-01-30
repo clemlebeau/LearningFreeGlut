@@ -1,10 +1,5 @@
 #include "SGA_Application.hpp"
 
-#include <GL/freeglut.h>
-#include <GL/glew.h>
-
-#include <iostream>
-
 SGA_Application::SGA_Application(int argc, char **argv, unsigned int displayMode = GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH) {
    glutInit(&argc, argv);
    glutInitDisplayMode(displayMode);

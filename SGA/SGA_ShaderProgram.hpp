@@ -2,6 +2,7 @@
 
 #include "SGA_Shader.hpp"
 
+#include <iostream>
 #include <list>
 
 class SGA_ShaderProgram {

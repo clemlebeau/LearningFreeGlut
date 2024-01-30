@@ -5,7 +5,7 @@
 
 class SGA_Renderer: public SGA_Window {
 public:
-   SGA_Renderer();
+   SGA_Renderer(int width, int height, const char* title);
 
    virtual ~SGA_Renderer();
 
@@ -16,5 +16,5 @@ public:
    virtual void handleEvents() = 0;
 
 private:
-   SGA_ShaderProgram* shaderProgram_;
+   SGA_ShaderProgram shaderProgram_;
 };
