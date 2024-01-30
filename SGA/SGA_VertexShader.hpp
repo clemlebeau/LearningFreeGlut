@@ -2,7 +2,7 @@
 
 #include "SGA_Shader.hpp"
 
-class SGA_VertexShader : public SGA_Shader {
-    public:
-        SGA_VertexShader();
+class SGA_VertexShader: public SGA_Shader {
+public:
+   SGA_VertexShader();
 };

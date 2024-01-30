@@ -4,17 +4,17 @@
 #include <GL/glew.h>
 
 class SGA_Shader {
-    public:
-        SGA_Shader();
+public:
+   SGA_Shader();
 
-        virtual ~SGA_Shader();
+   virtual ~SGA_Shader();
 
-        void loadCompileShader();
+   void loadCompileShader();
 
-        GLuint getShaderObject();
-    
-    private:
-        GLenum shaderType_;
-        char* shaderPath_;
-        GLuint shaderObj_;
+   GLuint getShaderObject();
+
+private:
+   GLenum shaderType_;
+   char* shaderPath_;
+   GLuint shaderObj_;
 };

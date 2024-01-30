@@ -2,7 +2,7 @@
 
 #include "SGA_Shader.hpp"
 
-class SGA_FragmentShader : public SGA_Shader {
-    public:
-        SGA_FragmentShader();
+class SGA_FragmentShader: public SGA_Shader {
+public:
+   SGA_FragmentShader();
 };

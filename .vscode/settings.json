@@ -1,4 +1,5 @@
 {
+  "clang-format.executable": "C:\\Program Files\\LLVM\\bin\\clang-format.exe",
   "C_Cpp_Runner.cCompilerPath": "C:/msys64/mingw64/bin/g++.exe",
   "C_Cpp_Runner.cppCompilerPath": "g++",
   "C_Cpp_Runner.debuggerPath": "gdb",
