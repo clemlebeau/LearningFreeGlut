@@ -12,10 +12,16 @@ public:
 
    void addShader(SGA_Shader* shader);
 
-   void linkProgram();
+   bool doesProgramLink();
 
    void validateProgram();
 
+   void use();
+
 private:
-   std::list<SGA_Shader*> shaders;
+   GLuint programIdentifier_;
+
+   std::list<SGA_Shader*> shaders_;
+
+   void attachShaders();
 };

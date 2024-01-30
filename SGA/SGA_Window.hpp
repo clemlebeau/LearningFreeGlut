@@ -2,7 +2,7 @@
 
 class SGA_Window {
 public:
-   SGA_Window();
+   SGA_Window(int width, int height, const char* title);
 
    virtual ~SGA_Window();
 

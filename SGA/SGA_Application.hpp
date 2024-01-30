@@ -3,11 +3,12 @@
 #include "SGA_Timer.hpp"
 #include "SGA_Window.hpp"
 
+#include <GL/freeglut.h>
 #include <list>
 
 class SGA_Application {
 public:
-   SGA_Application();
+   SGA_Application(int argc, char** argv, unsigned int displayMode = GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
 
    SGA_Application& getInstance();
 
@@ -21,6 +22,8 @@ private:
    SGA_Timer timer_;
 
    std::list<SGA_Window*> windows_;
+
+   int initGlew();
 };
 
 SGA_Application SGA_Application::instance_;

@@ -2,19 +2,26 @@
 
 #include <GL/freeglut.h>
 #include <GL/glew.h>
+#include <string>
 
 class SGA_Shader {
 public:
-   SGA_Shader();
+   SGA_Shader(const char* shaderPath);
 
    virtual ~SGA_Shader();
 
-   void loadCompileShader();
+   bool doesShaderCompile();
 
    GLuint getShaderObject();
 
-private:
+   void useProgram();
+
+protected:
    GLenum shaderType_;
-   char* shaderPath_;
+
+private:
+   const char* shaderPath_;
    GLuint shaderObj_;
+
+   std::string readFile(const char* filePath);
 };
