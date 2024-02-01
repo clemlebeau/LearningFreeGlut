@@ -1,8 +1,8 @@
 #pragma once
 
-#include "SGA/SGA_Window.hpp"
+#include "SGA/Window.hpp"
 
-class TestRenderer: public SGA_Window {
+class TestRenderer: public SGA::Window {
 public:
    TestRenderer(int width, int height, const char* title);
 

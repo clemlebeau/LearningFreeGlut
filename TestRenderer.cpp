@@ -1,7 +1,7 @@
 #include "TestRenderer.hpp"
 
 TestRenderer::TestRenderer(int width, int height, const char* title):
-    SGA_Window(width, height, title) {
+    SGA::Window(width, height, title) {
    setupDrawCallback();
 }
 
